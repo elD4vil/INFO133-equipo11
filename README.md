@@ -1,2 +1,8 @@
 # INFO133-equipo11
-Repositorio que tendra database de uno de los medios de comunicacion de PuertoRico
+Repositorio que tendra construcción de una base de datos sobre medios de prensa hispanohablantes (Puerto Rico)  en carpeta "Parte A" y 
+Información territorial basada en las comunas de Chile en carpeta "Parte B".
+
+Integrantes:
+Sebastian Añazco
+Benjamín Cea
+Branco Ruiz
