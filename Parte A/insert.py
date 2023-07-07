@@ -5,8 +5,8 @@ import sys
 # Connect to MariaDB Platform
 try:
     conn = mysql.connector.connect(
-        user="Lulu",
-        password="Calculadora21",
+        user="nuevousuario",
+        password="contraseña",
         host="127.0.0.1",
         port=3306
     )
