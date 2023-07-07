@@ -123,7 +123,7 @@ try:
     conn.commit()
     print("Los datos se han insertado correctamente en la base de datos.")
 
-    df = pd.read_csv("files/TablaFundador.csv")
+    df = pd.read_csv("files/TablaFundador.csv", sep=';')
     # Iterar sobre cada fila del DataFrame
     for _, row in df.iterrows():
         # Obtener los valores de cada columna
@@ -137,7 +137,7 @@ try:
     conn.commit()
     print("Los datos se han insertado correctamente en la base de datos.")
     
-    df = pd.read_csv("files/TablaRedSocial.csv")
+    df = pd.read_csv("files/TablaRedSocial.csv", sep=';')
     # Iterar sobre cada fila del DataFrame
     for _, row in df.iterrows():
         # Obtener los valores de cada columna
@@ -154,7 +154,7 @@ try:
     conn.commit()
     print("Los datos se han insertado correctamente en la base de datos.")
     
-    df = pd.read_csv("files/TablaSitioWeb.csv")
+    df = pd.read_csv("files/TablaSitioWeb.csv", sep=';')
     # Iterar sobre cada fila del DataFrame
     for _, row in df.iterrows():
         # Obtener los valores de cada columna
@@ -170,7 +170,7 @@ try:
     conn.commit()
     print("Los datos se han insertado correctamente en la base de datos.")
     
-    df = pd.read_csv("files/TablaCategoria.csv")
+    df = pd.read_csv("files/TablaCategoria.csv", sep=';')
     # Iterar sobre cada fila del DataFrame
     for _, row in df.iterrows():
         # Obtener los valores de cada columna
@@ -186,7 +186,7 @@ try:
     conn.commit()
     print("Los datos se han insertado correctamente en la base de datos.")
 
-    df = pd.read_csv("files/TablaNoticia.csv")
+    df = pd.read_csv("files/TablaNoticia.csv", sep=';')
     # Iterar sobre cada fila del DataFrame
     for _, row in df.iterrows():
         # Obtener los valores de cada columna
@@ -204,7 +204,7 @@ try:
     conn.commit()
     print("Los datos se han insertado correctamente en la base de datos.")
 
-    df = pd.read_csv("files/TablaFundar.csv")
+    df = pd.read_csv("files/TablaFundar.csv", sep=';')
     # Iterar sobre cada fila del DataFrame
     for _, row in df.iterrows():
         # Obtener los valores de cada columna

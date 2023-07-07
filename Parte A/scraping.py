@@ -1,26 +1,50 @@
-import sqlite3
+import mysql.connector
 
 def obtener_datos_noticia(nombre_medio, url):
-    # Conectar a la base de datos
-    conexion = sqlite3.connect('basedatos.db')
-    cursor = conexion.cursor()
+    # Configurar los datos de conexión a la base de datos
+    config = {
+        'user': 'root',
+        'password': '123456',
+        'host': 'localhost',
+        'database': 'Medios',
+        'raise_on_warnings': True
+    }
 
-    # Ejecutar una consulta para obtener los datos de la noticia
-    cursor.execute("SELECT titulo, fecha_publicacion FROM noticias WHERE medio=? AND url=?",
-                   (nombre_medio, url))
+    try:
+        # Establecer la conexión a la base de datos
+        conexion = mysql.connector.connect(**config)
 
-    # Obtener los resultados de la consulta
-    resultado = cursor.fetchone()
+        # Crear un cursor para ejecutar consultas
+        cursor = conexion.cursor()
 
-    # Cerrar la conexión a la base de datos
-    conexion.close()
+        # Ejecutar una consulta para obtener los datos de la noticia
+        consulta = """
+        SELECT Noticia.Xpath_Titulo, Noticia.Xpath_URL_Fecha
+        FROM Noticia
+        INNER JOIN SitioWeb ON Noticia.ID_SitioWeb = SitioWeb.ID_SitioWeb
+        INNER JOIN Medio ON SitioWeb.ID_Medio = Medio.ID_Medio
+        WHERE Medio.Nombre_Medio = %s AND Noticia.URL = %s
+        """
+        valores = (nombre_medio, url)
+        cursor.execute(consulta, valores)
 
-    # Verificar si se encontró la noticia en la base de datos
-    if resultado:
-        titulo, fecha_publicacion = resultado
-        return titulo, fecha_publicacion
-    else:
-        return None, None
+        # Obtener los resultados de la consulta
+        resultado = cursor.fetchone()
+
+        # Cerrar el cursor y la conexión a la base de datos
+        cursor.close()
+        conexion.close()
+
+        # Verificar si se encontró la noticia en la base de datos
+        if resultado:
+            titulo, fecha_publicacion = resultado
+            return titulo, fecha_publicacion
+        else:
+            return None, None
+
+    except mysql.connector.Error as error:
+        print("Error al conectar a la base de datos:", error)
+
 
 # Solicitar al usuario el nombre del medio de prensa y la URL de la noticia
 nombre_medio = input("Ingrese el nombre del medio de prensa: ")
