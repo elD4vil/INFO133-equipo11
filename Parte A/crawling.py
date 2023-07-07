@@ -3,7 +3,6 @@ import random
 from requests_html import HTMLSession
 import sys
 import time
-import mariadb
 
 def obtener_enlaces_categoria(nombre_medio, categoria):
     # Configurar los datos de conexión a la base de datos
@@ -59,7 +58,7 @@ try:
         'raise_on_warnings': True
     }
     
-except mariadb.Error as e:
+except mysql.connector.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
 

@@ -71,11 +71,12 @@ cur.execute("""
 # Crear la tabla Categoria
 cur.execute("""
     CREATE TABLE Categoria (
-        Nombre_Categoria VARCHAR(100) PRIMARY KEY,
+        Nombre_Categoria VARCHAR(100) NOT NULL,
         ID_SitioWeb INT,
         URL VARCHAR(255),
         Xpath_URL_Noticia VARCHAR(255),
-        FOREIGN KEY (ID_SitioWeb) REFERENCES SitioWeb(ID_SitioWeb)
+        PRIMARY KEY (Nombre_Categoria, ID_SitioWeb),
+        FOREIGN KEY (ID_SitioWeb) REFERENCES SitioWeb (ID_SitioWeb)
     )
 """)
 
@@ -163,7 +164,7 @@ try:
         col3 = row['Nombre_SitioWeb']
         col4 = row['URL']
         # Construir la consulta SQL de inserción
-        sql = f"INSERT INTO Fundador (ID_SitioWeb, ID_Medio, Nombre_SitioWeb, URL) VALUES ('{col1}', '{col2}', '{col3}', '{col4}')"
+        sql = f"INSERT INTO SitioWeb (ID_SitioWeb, ID_Medio, Nombre_SitioWeb, URL) VALUES ('{col1}', '{col2}', '{col3}', '{col4}')"
         # Ejecutar la consulta SQL
         cur.execute(sql)
     # Confirmar los cambios en la base de datos
@@ -192,10 +193,10 @@ try:
         # Obtener los valores de cada columna
         col1 = row['ID_Noticia']
         col2 = row['ID_SitioWeb']
-        col1 = row['URL']
-        col2 = row['Xpath_Titulo']
-        col1 = row['Xpath_Contenido']
-        col2 = row['Xpath_URL_Fecha']
+        col3 = row['URL']
+        col4 = row['Xpath_Titulo']
+        col5 = row['Xpath_Contenido']
+        col6 = row['Xpath_URL_Fecha']
         # Construir la consulta SQL de inserción
         sql = f"INSERT INTO Noticia (ID_Noticia, ID_SitioWeb, URL, Xpath_Titulo, Xpath_Contenido, Xpath_URL_Fecha) VALUES ('{col1}', '{col2}', '{col3}', '{col4}', '{col5}', '{col6}')"
         # Ejecutar la consulta SQL
