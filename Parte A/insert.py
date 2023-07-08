@@ -1,12 +1,21 @@
 import pandas as pd
 import mysql.connector
 import sys
+import os
+
+
+
+# Obtener la ruta absoluta del directorio actual
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construir la ruta al archivo CSV en la carpeta "files"
+csv_file = os.path.join(current_dir, "ParteA/files/TablaMedio.csv")
 
 # Connect to MariaDB Platform
 try:
     conn = mysql.connector.connect(
-        user="nuevousuario",
-        password="contraseña",
+        user="root",
+        password="123456",
         host="127.0.0.1",
         port=3306
     )
